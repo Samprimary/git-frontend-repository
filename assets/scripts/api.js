@@ -1,7 +1,7 @@
 'use strict'
 
 const config = require('./config')
-
+const events = require('./events')
 const store = require('./store')
 
 const signUp = function (data) {
@@ -41,5 +41,13 @@ const changePassword = function (data) {
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
+  })
+}
+
+const makeRaider = function (data) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/raiders',
+    data: data
   })
 }

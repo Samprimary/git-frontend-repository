@@ -1,6 +1,7 @@
 'use strict'
 
 const api = require('./api')
+const events = require('./events')
 
 $(() => {
   $('#dropdown-anchor').click('#show-sign-up', function () {
