@@ -16,7 +16,7 @@
       <h1>Raider Maker</h1>
       <div class="outer-padding">
 
-        <h2>Come Make a Raider</h2>
+        <h2>Assemble Your Raider Army</h2>
 
          <div class="tan-line"></div>
 
@@ -46,6 +46,29 @@
 
     <div id="sign-up-field" class="forms"></div>
       </div>
+      <div class="tan-line"></div>
+
+<h4>Delete a raider</h4>
+      <form id='delete-raiders-form' class="forms">
+          <input name="id" type="integer" placeholder="Enter ID">
+          <button type="submit"  class="forms">Delete</button>
+        </form>
+<h4>Create a raider</h4>
+        <form id='create-raiders-form' class="forms">
+            <input name="name" type="text" placeholder="Enter Name">
+            <input name="power" type="integer" placeholder="Enter Power">
+            <button type="submit"  class="forms">Create</button>
+          </form>
+<h4>Adjust a raider</h4>
+        <form id='adjust-raiders-form' class="forms">
+        <input name="ID" type="text" placeholder="Enter Name">
+        <input name="name" type="text" placeholder="Enter New Name">
+        <input name="power" type="integer" placeholder="Enter New Power">
+        <button type="submit"  class="forms">Adjust</button>
+      </form>
+      <button id="getRaidersButton" class="btn btn-default">Get Raiders!</button>
+    <button id="clearRaidersButton" class="btn btn-default">Clear Raiders!</button>
+    <div id="content" class="content"></div>
     </center>
     </body>
 </html>

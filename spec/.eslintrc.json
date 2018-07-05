@@ -5,7 +5,4 @@
   "rules": {
     "no-unused-expressions": "off"
   }
-  "parserOptions": {
-   "ecmaVersion": 6
- }
 }

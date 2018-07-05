@@ -51,3 +51,38 @@ const makeRaider = function (data) {
     data: data
   })
 }
+
+const changeRaider = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/raiders',
+    data: data
+  })
+}
+
+const getRaiders = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/raiders'
+  })
+}
+
+const removeRaiders = (data) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/raiders/' + data
+  })
+}
+
+
+module.exports = {
+  signUp: signUp,
+  signIn: signIn,
+  signOut: signOut,
+  changePassword: changePassword,
+  makeRaider: makeRaider,
+  changeRaider: changeRaider,
+  getRaiders: getRaiders,
+  removeRaiders: removeRaiders
+
+}

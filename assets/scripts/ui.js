@@ -35,7 +35,6 @@ const signUpError = function (error) {
 }
 
 const signInSuccess = function (data) {
-  loggedIn = true
   store.user = data.user
   $('#login-infobox').html(`<h4>Signed In!</h4>`)
   signInDisplay()
@@ -68,6 +67,26 @@ const signOutError = function (error) {
   $('#login-infobox').html(`<h4>Signed Out!</h4>`)
 }
 
+const showRaidersTemplate = require('./raider-listing.handlebars')
+
+const getRaidersSuccess = (data) => {
+  console.log(data)
+  const showRaidersHtml = showRaidersTemplate({ raiders: data.raiders })
+  $('.content').append(showRaidersHtml)
+}
+
+const deleteRaiderSuccess = () => {
+  $('.message').html('Raider annihlated')
+}
+
+const clearRaiders = () => {
+  $('.content').empty()
+}
+
+const clearRaiderError = (error) => {
+  console.log('Something went wrong.')
+}
+
 
   // const doSignUp = function () {
   //   $('#sign-up-form').on('submit', events.onSignUp)
@@ -86,6 +105,9 @@ module.exports = {
   changePasswordError: changePasswordError,
   signOutSuccess: signOutSuccess,
   signOutError: signOutError,
+  deleteRaiderSuccess: deleteRaiderSuccess,
+  clearRaiders: clearRaiders,
+  getRaidersSuccess: getRaidersSuccess,
   store: store
 //  doSignUp: doSignUp,
 //  doChangePassword: doChangePassword
