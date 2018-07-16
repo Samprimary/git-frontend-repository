@@ -103,8 +103,8 @@ const signOutSuccess = function () {
   $('#raider-options').html(``)
   $('#dropdown-anchor-pw').html(``)
   $('#initial-buttons').html(``)
+  $('#raiders-content').html(``)
   signOutAnnouncer()
-  // reqIndex.resetBoard()
 }
 
 const signOutError = function () {
