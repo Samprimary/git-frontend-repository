@@ -68,6 +68,20 @@ h2 {
   }
 }
 
+.my-raider {
+  color: $soft-tan;
+  background-color: $standard-gray;
+  border: black;
+  font-family: Helvetica, sans-serif;
+}
+
+.raider-power {
+  color: $alert-red;
+  background-color: $standard-gray;
+  border: black;
+  font-family: Helvetica, sans-serif;
+}
+
 .flashit{
   color:#f2f, infinite; // color overrides correctly only if i leave like this
 	animation: flash linear 1s infinite;
@@ -176,6 +190,10 @@ div.tiles:hover {
   border-style: solid;
   margin: 15px;
   border-color: gray;
+}
+
+.raider-button {
+  border-color: $soft-tan;
 }
 
 .clear {

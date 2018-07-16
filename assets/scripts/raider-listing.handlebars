@@ -1,12 +1,24 @@
 {{#each raiders as |raider|}}
   {{log raider}}
-
-  <small><h2 data-id="{{raider.id}}"> <ul><li>Name: <b>{{raider.name}}</b></li>
-  <div>
-      <li>Power: {{raider.power}}</li>
-      <li>ID: {{raider.id}}</li>
-</ul>
-</small></h2>
-  </div>
+  <div class="col-sm-3 raider-box">
+    <h4 data-id="{{raider.id}}" class="my-raider">{{raider.name}}</h4>
+    <ul data-id="{{raider.id}}">
+      <li><h4 class="raider-power">{{#if raider.id}}
+        Power Level: {{raider.power}}
+      {{else}}
+        No powerlevel found.
+      {{/if}}</h4></li>
+      <li>
+        <form class="update-raider">
+          <input name="raider[name]" type="text" placeholder="Name">
+          <br>
+          <input name="raider[power]" type="integer" placeholder="Power Level">
+          <br><br>
+          <button type="submit" class="btn btn-primary">Update raider!</button>
+        </form>
+      </li>
+      <li><button class="delete-raider btn btn-danger">Delete raider</button></li>
+    </ul>
+</div>
 
 {{/each}}

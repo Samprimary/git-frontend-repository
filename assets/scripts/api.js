@@ -1,7 +1,6 @@
 'use strict'
 
 const config = require('./config')
-const events = require('./events')
 const store = require('./store')
 
 const signUp = function (data) {
@@ -44,45 +43,76 @@ const changePassword = function (data) {
   })
 }
 
-const makeRaider = function (data) {
-  return $.ajax({
-    method: 'POST',
-    url: config.apiUrl + '/raiders',
-    data: data
-  })
-}
-
-const changeRaider = function (data) {
-  return $.ajax({
-    method: 'PATCH',
-    url: config.apiUrl + '/raiders',
-    data: data
-  })
-}
-
-const getRaiders = function () {
+const indexSubmit = function () {
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + '/raiders'
+    url: config.apiUrl + '/raiders/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
-const removeRaiders = (data) => {
+const getSubmit = function (data) {
   return $.ajax({
-    method: 'DELETE',
-    url: config.apiUrl + '/raiders/' + data
+    method: 'GET',
+    url: config.apiUrl + '/raiders/' + data.raiders.id,
+    headers: {
+      contentType: 'application/json'
+    },
+    data: {
+      id: data.raiders.id,
+      raider: {
+        name: data.raiders.name,
+        power: data.raiders.power
+      }
+    }
   })
 }
 
+const createSubmit = function (data) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/raiders/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+      contentType: 'application/json'
+    },
+    data: data
+  })
+}
+
+const updateSubmit = function (data, raiderId) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/raiders/' + raiderId,
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+      contentType: 'application/json'
+    },
+    data: data
+  })
+}
+
+const deleteSubmit = (raiderId) => {
+  return $.ajax({
+    url: config.apiUrl + '/raiders/' + raiderId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   signUp: signUp,
   signIn: signIn,
   signOut: signOut,
   changePassword: changePassword,
-  makeRaider: makeRaider,
-  changeRaider: changeRaider,
-  getRaiders: getRaiders,
-  removeRaiders: removeRaiders
+  indexSubmit: indexSubmit,
+  getSubmit: getSubmit,
+  createSubmit: createSubmit,
+  updateSubmit: updateSubmit,
+  deleteSubmit: deleteSubmit
 
 }

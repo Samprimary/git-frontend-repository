@@ -37,6 +37,7 @@
 
         <div id="dropdown-anchor">
             <h4><button id="show-sign-up" class="formlink" type="button">Sign Up</button></h4>
+        </div><div id="dropdown-anchor-pw">
         </div>
 
         <div id="dropdown-link">
@@ -45,31 +46,26 @@
     </div>
 
     <div id="sign-up-field" class="forms"></div>
-      </div>
+  </div>  <div id="change-password-field" class="forms"></div>
+          </div>
       <div class="tan-line"></div>
 
-<h4>Delete a raider</h4>
-      <form id='delete-raiders-form' class="forms">
-          <input name="id" type="integer" placeholder="Enter ID">
-          <button type="submit"  class="forms">Delete</button>
+      <div id="announcer"></div>
+
+      <div id="get-button"></div>
+      <div id="create-button"></div>
+
+      <button type="submit" id="get-raider" class="raider-button">Get All raiders</button>
+<br>
+
+        <form id="create-raider">
+          <input name="raider[name]" type="text" placeholder="Name!">
+          <input name="raider[power]" type="text" placeholder="Power level!">
+          <button type="submit" class="raider-button">Create raider!</button>
         </form>
-<h4>Create a raider</h4>
-        <form id='create-raiders-form' class="forms">
-            <input name="name" type="text" placeholder="Enter Name">
-            <input name="power" type="integer" placeholder="Enter Power">
-            <button type="submit"  class="forms">Create</button>
-          </form>
-<h4>Adjust a raider</h4>
-        <form id='adjust-raiders-form' class="forms">
-        <input name="ID" type="text" placeholder="Enter Name">
-        <input name="name" type="text" placeholder="Enter New Name">
-        <input name="power" type="integer" placeholder="Enter New Power">
-        <button type="submit"  class="forms">Adjust</button>
-      </form>
-      <div class="tan-line"></div>
-      <button id="getRaidersButton" class="btn btn-default">Get Raiders!</button>
-    <button id="clearRaidersButton" class="btn btn-default">Clear Raiders!</button>
-    <div id="content" class="content"></div>
+
+        <div id="raiders-content"></div>
+
     </center>
     </body>
 </html>

@@ -6,9 +6,9 @@ const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('events/onSignUp submitted')
+  // console.log('events/onSignUp submitted')
   const data = getFormFields(event.target)
-  console.log('data is ', data)
+  // console.log('data is ', data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpError)
@@ -16,9 +16,9 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('events/onSignIn submitted')
+  // console.log('events/onSignIn submitted')
   const data = getFormFields(event.target)
-  console.log('data is', data)
+  // console.log('data is', data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInError)
@@ -40,6 +40,56 @@ const onSignOut = function (event) {
     .catch(ui.signOutError)
 }
 
+const createRaider = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  // console.log('data is ', data)
+  api.createSubmit(data)
+    .then(ui.createSuccess)
+    .catch(ui.createError)
+  $(event.target).trigger('reset')
+}
+
+const indexRaiders = function (event) {
+  event.preventDefault()
+  api.indexSubmit()
+    .then(ui.indexSuccess)
+    .catch(ui.indexError)
+}
+
+const getRaider = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.getSubmit(data)
+}
+
+const updateRaiderList = function (event) {
+  $('.update-raider-list').show()
+} // may not work in time
+
+const updateRaider = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const raiderId = $(event.target).closest('ul').attr('data-id')
+  api.updateSubmit(data, raiderId)
+    .then(ui.updateSuccess)
+    .catch(ui.updateError)
+  $(event.target).trigger('reset')
+}
+
+const deleteRaider = function (event) {
+  event.preventDefault()
+  const raiderId = $(event.target).closest('ul').attr('data-id')
+  api.deleteSubmit(raiderId)
+    .then(ui.deleteSuccess)
+    .catch(ui.deleteError)
+}
+
+const addHandlers = () => {
+  $('#getRaidersButton').on('click', ui.onGetRaiders)
+  $('#clearRaidersButton').on('click', ui.onClearRaiders)
+}
+
 const onGetRaiders = (event) => {
   event.preventDefault()
   api.getRaiders()
@@ -52,39 +102,22 @@ const onClearRaiders = (event) => {
   ui.clearRaiders()
 }
 
-const onRemoveRaider = (event) => {
-  event.preventDefault()
-  const raiderId = $(event.target).closest('ul').attr('data-id')
-  console.log('raiderId is ', raiderId)
-    api.deleteRaiders(raiderId)
-      .then(ui.getRaidersSucess)
-      .catch(ui.failure)
-}
-
-const onDeleteRaiders = (event) => {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log('data is' + data)
-  api.removeRaiders(data)
-  .then(ui.removeRaidersSucess)
-  .catch(ui.failure)
-}
-
-const addHandlers = () => {
-  $('#getRaidersButton').on('click', onGetRaiders)
-  $('#clearRaidersButton').on('click', onClearRaiders)
-  $('.content').on('click', '.remove-raider', onRemoveRaider)
-
-  $('#delete-raiders-form').on('click', onDeleteRaiders)
-}
-
 module.exports = {
+  addHandlers: addHandlers,
+  //
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onChangePassword: onChangePassword,
   onSignOut: onSignOut,
-  addHandlers: addHandlers,
-  onRemoveRaider: onRemoveRaider,
+  //
+  indexRaiders: indexRaiders,
+  createRaider: createRaider,
+  getRaider: getRaider,
+  updateRaider: updateRaider,
+  deleteRaider: deleteRaider,
+  //
+  updateRaiderList: updateRaiderList,
+  //
   onGetRaiders: onGetRaiders,
   onClearRaiders: onClearRaiders
 }
