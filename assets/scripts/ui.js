@@ -116,7 +116,7 @@ const createSuccess = function () {
 }
 
 const createError = function (error) {
-  $('#content').html('We could not make your raider.', error)
+  $('#announcer').html('We could not make your raider.', error)
 }
 
 const indexSuccess = function (data) {

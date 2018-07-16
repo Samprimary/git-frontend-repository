@@ -71,11 +71,12 @@ const getSubmit = function (data) {
 }
 
 const createSubmit = function (data) {
+  console.log('data is', data)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/raiders/',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
+    //  Authorization: 'Token token=' + store.user.token,
       contentType: 'application/json'
     },
     data: data
